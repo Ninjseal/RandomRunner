@@ -1,91 +1,62 @@
 package com.gdxcollab.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.Shape;
-import com.badlogic.gdx.physics.box2d.World;
+import com.gdxcollab.game.screens.AbstractGame;
+import com.gdxcollab.game.screens.AbstractGameScreen;
+import com.gdxcollab.game.screens.LoadingScreen;
+import com.gdxcollab.game.screens.MenuScreen;
+import com.gdxcollab.game.screens.PlayScreen;
+import com.gdxcollab.game.utils.Assets;
+import com.gdxcollab.game.utils.GamePreferences;
+import com.hisame.game.screens.transitions.ScreenTransition;
+import com.hisame.game.screens.transitions.ScreenTransitionFade;
 
-public class GameMain extends ApplicationAdapter {
+public class GameMain extends AbstractGame {
 
-	private OrthographicCamera camera;
-
-	private World world;
-	private Body player, platform;
-	private Box2DDebugRenderer b2dr;
+	private static final String TAG = GameMain.class.getName();
 	
-	public static final float PPM = 32f;
-
+	private PlayScreen playScreen;
+	private MenuScreen menuScreen;
+	private LoadingScreen loadingScreen;
+	
+	public static enum ScreenType {
+		Loading,
+		Menu,
+		Play;
+	}
+	
+	public AbstractGameScreen getScreenType(ScreenType screenType){
+		switch(screenType){
+			case Loading:
+				return loadingScreen;
+			case Menu:
+				return menuScreen;
+			case Play:
+				return playScreen;
+			default:
+				return menuScreen;
+		}
+	}
+	
 	@Override
 	public void create() {
-		float h = Gdx.graphics.getWidth();
-		float w = Gdx.graphics.getHeight();
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, w / 2, h / 2);
-		b2dr = new Box2DDebugRenderer();
-		world = new World(new Vector2(0, -9.8f), false);
-		player = createPlayer();
-		platform = createPlatform();
-	}
-
-	@Override
-	public void render() {
-
-		update(Gdx.graphics.getDeltaTime());
-
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		b2dr.render(world, camera.combined.cpy().scl(PPM));
-
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		camera.setToOrtho(false, width, height);
+		// Init Assets for LoadingScreen at the beginning
+		Assets.instance.initLoading();
+		
+		// Load preferences for audio settings and start playing music
+		GamePreferences.instance.load();
+		
+		loadingScreen = new LoadingScreen(this);
+		menuScreen = new MenuScreen(this);
+		playScreen = new PlayScreen(this);
+		
+		ScreenTransition transition = ScreenTransitionFade.init(1.0f);
+		
+		setScreen(loadingScreen, transition);
 	}
 
 	@Override
 	public void dispose() {
-		world.dispose();
-		b2dr.dispose();
+		super.dispose();
+		Assets.instance.dispose();
 	}
-
-	public void update(float delta) {
-		world.step(1 / 60f, 6, 2);
-	}
-
-	public Body createPlayer() {
-		Body playerBody;
-		BodyDef def = new BodyDef();
-		def.type = BodyDef.BodyType.DynamicBody;
-		def.position.set(200 / PPM, 300 / PPM);
-		def.fixedRotation = true;
-		playerBody = world.createBody(def);
-		Shape shape = new PolygonShape();
-		((PolygonShape) shape).setAsBox(25 / PPM, 25 / PPM);
-		playerBody.createFixture(shape, 1.0f);
-		shape.dispose();
-		return playerBody;
-	}
-	
-	public Body createPlatform() {
-		Body platformBody;
-		BodyDef bDef = new BodyDef();
-		bDef.type = BodyDef.BodyType.StaticBody;
-		bDef.position.set(170 / PPM, 50 / PPM);
-		platformBody = world.createBody(bDef);
-		Shape shape = new PolygonShape();
-		((PolygonShape)shape).setAsBox(70 / PPM, 50 / PPM);
-		platformBody.createFixture(shape, 1.0f);
-		shape.dispose();
-		return platformBody;
-	}
-	
 }

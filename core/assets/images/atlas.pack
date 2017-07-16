@@ -1,0 +1,61 @@
+
+objects.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+house
+  rotate: false
+  xy: 1, 357
+  size: 608, 608
+  orig: 608, 608
+  offset: 0, 0
+  index: -1
+manhole
+  rotate: false
+  xy: 1, 195
+  size: 288, 160
+  orig: 288, 160
+  offset: 0, 0
+  index: -1
+fence
+  rotate: false
+  xy: 611, 837
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+trash
+  rotate: false
+  xy: 1, 1
+  size: 128, 192
+  orig: 128, 192
+  offset: 0, 0
+  index: -1
+big_dog
+  rotate: false
+  xy: 291, 227
+  size: 160, 128
+  orig: 160, 128
+  offset: 0, 0
+  index: -1
+erwin
+  rotate: false
+  xy: 611, 739
+  size: 128, 96
+  orig: 128, 96
+  offset: 0, 0
+  index: -1
+gold
+  rotate: false
+  xy: 869, 901
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+sandwich
+  rotate: false
+  xy: 131, 129
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
