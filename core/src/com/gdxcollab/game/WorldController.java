@@ -8,10 +8,10 @@ import com.badlogic.gdx.utils.Disposable;
 import com.gdxcollab.game.GameMain.ScreenType;
 import com.gdxcollab.game.objects.Player;
 import com.gdxcollab.game.screens.AbstractGame;
+import com.gdxcollab.game.screens.transitions.ScreenTransition;
+import com.gdxcollab.game.screens.transitions.ScreenTransitionSlide;
 import com.gdxcollab.game.utils.CameraHelper;
 import com.gdxcollab.game.utils.Level;
-import com.hisame.game.screens.transitions.ScreenTransition;
-import com.hisame.game.screens.transitions.ScreenTransitionSlide;
 
 public class WorldController extends InputAdapter implements Disposable {
 

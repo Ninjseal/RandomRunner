@@ -5,10 +5,10 @@ import com.gdxcollab.game.screens.AbstractGameScreen;
 import com.gdxcollab.game.screens.LoadingScreen;
 import com.gdxcollab.game.screens.MenuScreen;
 import com.gdxcollab.game.screens.PlayScreen;
+import com.gdxcollab.game.screens.transitions.ScreenTransition;
+import com.gdxcollab.game.screens.transitions.ScreenTransitionFade;
 import com.gdxcollab.game.utils.Assets;
 import com.gdxcollab.game.utils.GamePreferences;
-import com.hisame.game.screens.transitions.ScreenTransition;
-import com.hisame.game.screens.transitions.ScreenTransitionFade;
 
 public class GameMain extends AbstractGame {
 

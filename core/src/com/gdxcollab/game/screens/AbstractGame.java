@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
-import com.hisame.game.screens.transitions.ScreenTransition;
+import com.gdxcollab.game.screens.transitions.ScreenTransition;
 
 public abstract class AbstractGame implements ApplicationListener {
 

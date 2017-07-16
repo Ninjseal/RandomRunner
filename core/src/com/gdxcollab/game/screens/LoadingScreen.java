@@ -7,10 +7,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.gdxcollab.game.GameMain;
+import com.gdxcollab.game.screens.transitions.ScreenTransition;
+import com.gdxcollab.game.screens.transitions.ScreenTransitionSlide;
 import com.gdxcollab.game.utils.Assets;
 import com.gdxcollab.game.utils.Constants;
-import com.hisame.game.screens.transitions.ScreenTransition;
-import com.hisame.game.screens.transitions.ScreenTransitionSlide;
 
 public class LoadingScreen extends AbstractGameScreen {
 

@@ -32,12 +32,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.gdxcollab.game.GameMain;
+import com.gdxcollab.game.screens.transitions.ScreenTransition;
+import com.gdxcollab.game.screens.transitions.ScreenTransitionFade;
 import com.gdxcollab.game.utils.Assets;
 import com.gdxcollab.game.utils.AudioManager;
 import com.gdxcollab.game.utils.Constants;
 import com.gdxcollab.game.utils.GamePreferences;
-import com.hisame.game.screens.transitions.ScreenTransition;
-import com.hisame.game.screens.transitions.ScreenTransitionFade;
 
 public class MenuScreen extends AbstractGameScreen {
 
